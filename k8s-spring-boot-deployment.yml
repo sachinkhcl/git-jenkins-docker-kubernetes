@@ -30,27 +30,27 @@ spec:
           readinessProbe:
             httpGet:
               path: /hello
-              port: 8081
+              port: 8080
             initialDelaySeconds: 15
             periodSeconds: 10
 
           livenessProbe:
             httpGet:
               path: /hello
-              port: 8081
+              port: 8080
             initialDelaySeconds: 15
             periodSeconds: 10
 
           startupProbe:
             httpGet:
               path: /hello
-              port: 8081
+              port: 8080
             failureThreshold: 30
             periodSeconds: 10
 
           env:
             - name: PORT
-              value: "8081"
+              value: "8080"
 ---
 #apiVersion: v1
 #kind: Service
@@ -71,12 +71,12 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 81
-      targetPort: 8081
+    - port: 80
+      targetPort: 8080
       nodePort: 30080
       name: http
     - port: 443
-      targetPort: 8081
+      targetPort: 8080
       nodePort: 30443
       name: https
   selector:
